@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">BomFilmeApp</string>
+    <string name="app_name">Bom Filme</string>
+    <string name="it_filmes_populares">Filmes populares</string>
+    <string name="it_filmes_acessados">Filmes acessados</string>
+    <string name="search_hint">Um filme</string>
 </resources>

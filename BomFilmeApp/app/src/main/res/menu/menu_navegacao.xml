@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/mgr_navegacao">
+        <item android:title="@string/it_filmes_populares"
+            android:id="@+id/mit_filmes_populares"
+            android:icon="@android:drawable/star_big_on" />
+        <item android:title="@string/it_filmes_acessados"
+            android:id="@+id/mit_filmes_acessados"
+            android:icon="@android:drawable/ic_menu_recent_history" />
+    </group>
+</menu>
