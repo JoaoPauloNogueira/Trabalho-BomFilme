@@ -152,8 +152,6 @@ ListaFilmesFragment.OnFragmentInteractionListener {
 
             String nomeFilme = intent.getStringExtra(SearchManager.QUERY);
 
-            Toast.makeText(this, R.string.msg_busca_filme + nomeFilme, Toast.LENGTH_LONG).show();
-
             buscaFilmesParaVisualizar(ORIGEM_BUSCA, nomeFilme);
         }
     }
