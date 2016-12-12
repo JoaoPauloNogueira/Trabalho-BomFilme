@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Joao Paulo on 11/12/2016.
- */
-
 public class FilmesDBHelper extends SQLiteOpenHelper {
 
     public FilmesDBHelper(Context context) {
@@ -33,13 +29,13 @@ public class FilmesDBHelper extends SQLiteOpenHelper {
         onCreate(sqLDB);
     }
 
-    public static Long persistirData(Date date) {
+    private static Long persistirData(Date date) {
         if (date != null) {
             return date.getTime();
         }
         return null;
     }
-    public static Date carregarData(Cursor cursor, int indice) {
+    private static Date carregarData(Cursor cursor, int indice) {
 
         if (cursor.isNull(indice)) {
 
@@ -48,7 +44,7 @@ public class FilmesDBHelper extends SQLiteOpenHelper {
         return new Date(cursor.getLong(indice));
     }
 
-    public long adicionarAcessoAoFilme(Filme filme, Date acesso) {
+    public long adicionarAcessoAoFilme(Filme filme, long acesso) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -58,7 +54,7 @@ public class FilmesDBHelper extends SQLiteOpenHelper {
         values.put(DataBaseContract.COLUMN_SINOPSE, filme.getSinopse());
         values.put(DataBaseContract.COLUMN_IMAGEM_POSTER, filme.getImagemPoster());
         values.put(DataBaseContract.COLUMN_IMAGEM_BACK, filme.getImagemBack());
-        values.put(DataBaseContract.COLUMN_ACESSO, persistirData(acesso));
+        values.put(DataBaseContract.COLUMN_ACESSO, acesso);
 
         long novoId = db.insert(DataBaseContract.TABLE_FILMES, null, values);
         db.close();
@@ -73,7 +69,7 @@ public class FilmesDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(DataBaseContract.TABLE_FILMES, DataBaseContract.retornaCamposSelecao(),
                 null, null, null, null, DataBaseContract.retornaOrdenacaoConsulta());
 
-        List<Filme> lf = new ArrayList<Filme>();
+        List<Filme> lf = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
 
@@ -89,7 +85,7 @@ public class FilmesDBHelper extends SQLiteOpenHelper {
                 }
 
                 lf.add(f);
-            } while (cursor.moveToNext() && (quantidade == 0 || lf.size() <= quantidade));
+            } while (cursor.moveToNext() && (quantidade == 0 || lf.size() < quantidade));
         }
         cursor.close();
 

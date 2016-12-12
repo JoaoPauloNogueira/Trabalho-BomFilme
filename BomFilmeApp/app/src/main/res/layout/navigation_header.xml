@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
 
-    android:layout_height="200dp"
+    android:layout_height="180dp"
     android:background="@mipmap/darkbluebackground">
 
     <TextView
@@ -20,8 +20,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/bomfilme2"
-        android:layout_marginBottom="20dp"
+        app:srcCompat="@mipmap/bomfilme_icon2"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:contentDescription="@string/app_name"
         android:id="@+id/img_navigation_header"/>
 </LinearLayout>
