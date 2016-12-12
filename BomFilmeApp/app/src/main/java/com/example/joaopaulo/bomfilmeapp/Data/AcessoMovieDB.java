@@ -24,6 +24,6 @@ public class AcessoMovieDB {
 
     public static String retornaUrlPesquisa(String nomeFilme) {
 
-        return URL_PESQUISA + "?" + API_KEY + QUERY + nomeFilme.replace(" ", "%20");
+        return URL_PESQUISA + "?" + API_KEY + QUERY + nomeFilme.replace(" ", "%20") + LINGUAGEM;
     }
 }
