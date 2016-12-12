@@ -152,7 +152,7 @@ ListaFilmesFragment.OnFragmentInteractionListener {
 
             String nomeFilme = intent.getStringExtra(SearchManager.QUERY);
 
-            Toast.makeText(this, "Realizando a busca por: " + nomeFilme, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.msg_busca_filme + nomeFilme, Toast.LENGTH_LONG).show();
 
             buscaFilmesParaVisualizar(ORIGEM_BUSCA, nomeFilme);
         }
@@ -186,19 +186,25 @@ ListaFilmesFragment.OnFragmentInteractionListener {
 
     public void verificaListaFilmes( List<Filme> listaFilmes) {
 
-        if (listaFilmes.size() > 0) {
+        if (listaFilmes != null) {
 
-            ListaFilmesFragment fAtual = new ListaFilmesFragment();
+            if (listaFilmes.size() > 0) {
 
-            fAtual.setListaFilmes(listaFilmes);
+                ListaFilmesFragment fAtual = new ListaFilmesFragment();
 
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.frl_fragment, fAtual);
-            ft.commit();
+                fAtual.setListaFilmes(listaFilmes);
 
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.frl_fragment, fAtual);
+                ft.commit();
+
+            } else {
+
+                Toast.makeText(this, R.string.msg_erro_busca_filme, Toast.LENGTH_LONG).show();
+            }
         } else {
 
-            Toast.makeText(this, "Não foi encontrado filme com o nome colocado para busca!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.msg_erro_conexao, Toast.LENGTH_LONG).show();
         }
     }
 
