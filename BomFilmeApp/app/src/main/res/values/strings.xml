@@ -4,7 +4,7 @@
     <string name="it_filmes_acessados">Filmes acessados</string>
     <string name="search_hint">Um filme</string>
 
-    <string name="msg_busca_filme">Realizando a busca por: </string>
+    <string name="msg_busca_filme">Não foi possível carregar as informações do filme.</string>
     <string name="msg_erro_busca_filme">Não foi encontrado filme com o nome colocado para busca!</string>
     <string name="msg_erro_conexao">Não foi possível se conectar com os servidores!
 Verifique se o seu dispositivo está conectado a Internet.</string>

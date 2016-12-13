@@ -219,14 +219,6 @@ ListaFilmesFragment.OnFragmentInteractionListener {
         }
     }
 
-    public void atualizaImagem(ImageView imageView, String imagemFilme ) {
-
-        Picasso.with(this)
-                .load(AcessoMovieDB.retornaUrlImagem(imagemFilme))
-                .placeholder(R.mipmap.bomfilme_icon)
-                .into(imageView);
-    }
-
     @Override
     public void onFragmentInteraction() { }
 }

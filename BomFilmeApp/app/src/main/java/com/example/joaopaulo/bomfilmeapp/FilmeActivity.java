@@ -1,12 +1,11 @@
 package com.example.joaopaulo.bomfilmeapp;
 
-import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.joaopaulo.bomfilmeapp.Data.AcessoMovieDB;
 import com.example.joaopaulo.bomfilmeapp.Data.Filme;
@@ -40,28 +39,27 @@ public class FilmeActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         Filme f = (Filme) b.getSerializable("filme");
 
-        Picasso.with(this)
-                .load(AcessoMovieDB.retornaUrlImagem(f.getImagemBack()))
-                .placeholder(R.mipmap.bomfilme)
-                .into(filmeBack);
+        if (f != null) {
 
-        Picasso.with(this)
-                .load(AcessoMovieDB.retornaUrlImagem(f.getImagemPoster()))
-                .placeholder(R.mipmap.bomfilme)
-                .into(filmePoster);
+            Picasso.with(this)
+                    .load(AcessoMovieDB.retornaUrlImagem(f.getImagemBack()))
+                    .placeholder(R.mipmap.bomfilme)
+                    .into(filmeBack);
 
-        tituloBackFilme.setText(f.getTitulo());
-        tituloFilme.setText(f.getTitulo());
-        sinopseFilme.setText(f.getSinopse());
-        sinopseFilme.setMovementMethod(new ScrollingMovementMethod());
-        lancamentoFilme.setText(android.text.format.DateFormat.format("dd/MM/yyyy", f.getLancamento()));
+            Picasso.with(this)
+                    .load(AcessoMovieDB.retornaUrlImagem(f.getImagemPoster()))
+                    .placeholder(R.mipmap.bomfilme)
+                    .into(filmePoster);
 
-    }
+            tituloBackFilme.setText(f.getTitulo());
+            tituloFilme.setText(f.getTitulo());
+            sinopseFilme.setText(f.getSinopse());
+            sinopseFilme.setMovementMethod(new ScrollingMovementMethod());
+            lancamentoFilme.setText(android.text.format.DateFormat.format("dd/MM/yyyy", f.getLancamento()));
 
-    private void finalizaVisualizacaoFilme() {
+        } else {
 
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
+            Toast.makeText(this, R.string.msg_busca_filme, Toast.LENGTH_SHORT).show();
+        }
     }
 }
